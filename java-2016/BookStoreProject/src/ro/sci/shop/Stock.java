@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Stock {
 
+	// this does not quite belong here
 	List<Stock> stockList = new ArrayList<Stock>();
 
 	public int quantity;
@@ -62,6 +63,7 @@ public class Stock {
 	}
 
 	public void updateStock(long isbn, int noOfBooks) {
+		//what would you expect this to do ?
 		getStockByIsbn(isbn);
 		setQuantity(getQuantity() - noOfBooks);
 	}

@@ -24,6 +24,7 @@ public class TestCart {
 	List<Book> catalog = null;
 	List<Stock> stockList = null;
 
+	//move test specific data in @Before so that it gets applied correctly to each test
 	Cart cart = new Cart();
 	Customer customer = new Customer();
 

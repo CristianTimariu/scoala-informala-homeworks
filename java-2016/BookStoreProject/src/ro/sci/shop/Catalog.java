@@ -39,6 +39,7 @@ public class Catalog {
 	public long searchBookIsbn(String title) { 
 		long isbn = 0;
 		for (Book b : books) {
+			// b.getTitle().equals(title)
 			if (b.getTitle() == title) {
 				isbn = b.getIsbn();
 			} else {
