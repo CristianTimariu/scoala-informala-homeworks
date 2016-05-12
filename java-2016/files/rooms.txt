@@ -1,4 +1,0 @@
-room1,SINGLE,"camera cu vedere la munte",2,KING_SIZE,100
-room2,DOUBLE,"camera cu vedere la munte",2,KING_SIZE,150
-room3,SINGLE,"camera cu vedere la munte",4,KING_SIZE,120
-room4,DOUBLE,"camera cu vedere la munte",4,KING_SIZE,100
