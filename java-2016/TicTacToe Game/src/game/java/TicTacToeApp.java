@@ -6,5 +6,4 @@ public class TicTacToeApp {
 		// TODO Auto-generated method stub
 
 	}
-
 }
