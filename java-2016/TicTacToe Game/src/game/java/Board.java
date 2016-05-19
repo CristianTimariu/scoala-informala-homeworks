@@ -1,5 +1,7 @@
 package game.java;
 
+import java.awt.Graphics;
+
 /**
  * Board class that use cells to create game board.
  * 
@@ -61,5 +63,10 @@ public class Board {
 			}
 		}
 		return true;
+	}
+
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+
 	}
 }

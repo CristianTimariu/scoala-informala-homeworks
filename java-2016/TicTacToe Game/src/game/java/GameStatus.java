@@ -7,5 +7,5 @@ package game.java;
  *
  */
 public enum GameStatus {
-	PLAYING, DROW, X_WON, O_WON;
+	PLAYING, DRAW, X_WON, O_WON;
 }
