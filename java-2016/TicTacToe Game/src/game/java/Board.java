@@ -1,6 +1,9 @@
 package game.java;
 
+import java.awt.Color;
 import java.awt.Graphics;
+
+import javax.swing.JPanel;
 
 /**
  * Board class that use cells to create game board.
@@ -8,8 +11,10 @@ import java.awt.Graphics;
  * @author TimariuCristian
  *
  */
-public class Board {
+public class Board extends JPanel {
 
+	private static final long serialVersionUID = 1L;
+	
 	Cell[][] cells; // two dimensions array.
 
 	/**
@@ -23,27 +28,34 @@ public class Board {
 			}
 		}
 	}
+	
+	public void initGameBoard() {
+		for (int row = 0; row < 3; ++row) {
+			for (int col = 0; col < 3; ++col) {
+				cells[row][col].clearCell(); // clear the cell content
+			}
+		}
+	}
 
 	/**
 	 * Determines if there is a winner.
+	 * @param playerMark 
 	 * 
-	 * @param mark
-	 *            (X, O, Empty)
 	 * @return True, if someone wins.
 	 */
-	public boolean hasWon(Mark mark) {
+	public boolean hasWon(Mark playerMark) {
 		return (// search for 3 in a row.
-		cells[0][0].content.equals(mark) && cells[0][1].equals(mark) && cells[0][2].equals(mark)
-				|| cells[1][0].content.equals(mark) && cells[1][1].equals(mark) && cells[1][2].equals(mark)
-				|| cells[2][0].content.equals(mark) && cells[2][1].equals(mark) && cells[2][2].equals(mark)
-				// search for 3 in a col.
-				|| cells[0][0].content.equals(mark) && cells[1][0].equals(mark) && cells[2][0].equals(mark)
-				|| cells[0][1].content.equals(mark) && cells[1][1].equals(mark) && cells[2][1].equals(mark)
-				|| cells[0][2].content.equals(mark) && cells[1][2].equals(mark) && cells[2][2].equals(mark)
+		cells[0][0].content.equals(playerMark) && cells[0][1].content.equals(playerMark) && cells[0][2].content.equals(playerMark)
+				|| cells[1][0].content.equals(playerMark) && cells[1][1].content.equals(playerMark) && cells[1][2].content.equals(playerMark)
+				|| cells[2][0].content.equals(playerMark) && cells[2][1].content.equals(playerMark) && cells[2][2].content.equals(playerMark)
+				// search for 3 in a column.
+				|| cells[0][0].content.equals(playerMark) && cells[1][0].content.equals(playerMark) && cells[2][0].content.equals(playerMark)
+				|| cells[0][1].content.equals(playerMark) && cells[1][1].content.equals(playerMark) && cells[2][1].content.equals(playerMark)
+				|| cells[0][2].content.equals(playerMark) && cells[1][2].content.equals(playerMark) && cells[2][2].content.equals(playerMark)
 				// search for 3 in the diagonal
-				|| cells[0][0].content.equals(mark) && cells[1][1].equals(mark) && cells[2][2].equals(mark)
-				// search for 3 in the opp-diagonal
-				|| cells[0][2].content.equals(mark) && cells[1][1].equals(mark) && cells[2][0].equals(mark));
+				|| cells[0][0].content.equals(playerMark) && cells[1][1].content.equals(playerMark) && cells[2][2].content.equals(playerMark)
+				// search for 3 in the opposite-diagonal
+				|| cells[0][2].content.equals(playerMark) && cells[1][1].content.equals(playerMark) && cells[2][0].content.equals(playerMark));
 	}
 
 	/**
@@ -65,8 +77,25 @@ public class Board {
 		return true;
 	}
 
-	public void paint(Graphics g) {
-		// TODO Auto-generated method stub
+	/** Paint the board game, given the Graphics context */
 
+	public void paint(Graphics g) {
+		// Draw the grid-lines
+		g.setColor(Color.DARK_GRAY);
+		for (int row = 1; row < 3; ++row) {
+			g.fillRoundRect(0, GameMain.CELL_SIZE * row - GameMain.GRID_LINE, GameMain.BOARD_WIDTH - 1,
+					GameMain.GRID_LINE, GameMain.GRID_LINE, GameMain.GRID_LINE);
+		}
+		for (int col = 1; col < 3; ++col) {
+			g.fillRoundRect(GameMain.CELL_SIZE * col - GameMain.GRID_LINE, 0, GameMain.GRID_LINE,
+					GameMain.BOARD_HEIGHT - 1, GameMain.GRID_LINE, GameMain.GRID_LINE);
+		}
+
+		// Draw all the cells
+		for (int row = 0; row < 3; ++row) {
+			for (int col = 0; col < 3; ++col) {
+				cells[row][col].paint(g); // paint the cells
+			}
+		}
 	}
 }
