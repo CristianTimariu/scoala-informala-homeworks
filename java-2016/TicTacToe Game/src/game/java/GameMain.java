@@ -38,7 +38,7 @@ public class GameMain extends JPanel {
 	private GameStatus currentState;
 	private Mark currentPlayer;
 	private JLabel statusBar;
-	
+
 	/** Constructor for Tic-Tac-Toe game, with UI setup */
 	public GameMain() {
 		statusBar = new JLabel("           ");
@@ -141,9 +141,13 @@ public class GameMain extends JPanel {
 		int row = random.nextInt(3);
 		int col = random.nextInt(3);
 		if (getCurrentState().equals(GameStatus.PLAYING)) {
-			if (board.cells[row][col].content.equals(Mark.EMPTY)) {
-				board.cells[row][col].content = playerMark;
+			while (!board.cells[row][col].content.equals(Mark.EMPTY)) {
+				//search for a random position
+				row = random.nextInt(3);
+				col = random.nextInt(3);
 			}
+			
+			board.cells[row][col].content = playerMark;
 		}
 	}
 
