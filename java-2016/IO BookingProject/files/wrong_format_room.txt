@@ -1,0 +1,1 @@
+room1,SINGLE,"cu balcon",two,QUEEN_SIZE,100
